@@ -3,6 +3,23 @@ import styled from "styled-components";
 export const ListContainer = styled.div``;
 ListContainer.displayName = "ListContainer";
 
+export const ArrivalList = styled.ul`
+  list-style: none;
+  display: flex;
+  background-color: #ededed;
+  border: 1px solid #dfdfdf;
+  border-radius: 12px;
+  margin: 12px 24px;
+`;
+ArrivalList.displayName = "ArrivalList";
+
+export const ListElement = styled.li`
+  display: flex;
+  align-items: center;
+  padding: 10px 0px;
+`;
+ListElement.displayName = "ListElement";
+
 export const LineName = styled.p<{ lineName?: string }>`
   font-size: 0.8rem;
   margin-left: 12px;

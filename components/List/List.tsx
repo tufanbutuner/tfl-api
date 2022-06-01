@@ -1,4 +1,4 @@
-import { LineName, ListContainer } from "./styles";
+import { ArrivalList, LineName, ListContainer, ListElement } from "./styles";
 import React, { useEffect, useState } from "react";
 
 import Card from "../Card/Card";
@@ -23,48 +23,44 @@ export default function List() {
 
   useEffect(() => {
     fetchAPI();
-    console.log(platformTwo.sort((a, b) => a.timeToStation - b.timeToStation));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
-      <Card title="Live arrivals for platform 1">
+      <Card title="Live arrivals at Platform 1">
         <ListContainer>
           {platformOne
             .sort((a, b) => a.timeToStation - b.timeToStation)
             .map((point) => {
               return (
-                <div key={point.id}>
-                  <ul>
-                    <li>
-                      {point.towards},{point.timeToStation}
-                      <LineName lineName={point.lineName}>
-                        {point.lineName}
-                      </LineName>
-                    </li>
-                  </ul>
-                </div>
+                <ArrivalList key={point.id}>
+                  <ListElement>
+                    {point.towards},{point.timeToStation}
+                    <LineName lineName={point.lineName}>
+                      {point.lineName}
+                    </LineName>
+                  </ListElement>
+                </ArrivalList>
               );
             })}
         </ListContainer>
       </Card>
+
       <Card title="Live arrivals for Platform 2">
         <ListContainer>
           {platformTwo
             .sort((a, b) => a.timeToStation - b.timeToStation)
             .map((point) => {
               return (
-                <div key={point.id}>
-                  <ul>
-                    <li>
-                      {point.towards},{point.timeToStation}
-                      <LineName lineName={point.lineName}>
-                        {point.lineName}
-                      </LineName>
-                    </li>
-                  </ul>
-                </div>
+                <ArrivalList key={point.id}>
+                  <ListElement>
+                    {point.towards},{point.timeToStation}
+                    <LineName lineName={point.lineName}>
+                      {point.lineName}
+                    </LineName>
+                  </ListElement>
+                </ArrivalList>
               );
             })}
         </ListContainer>
