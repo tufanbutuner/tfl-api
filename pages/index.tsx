@@ -1,5 +1,6 @@
 import Card from "../components/Card/Card";
 import Head from "next/head";
+import List from "../components/List/List";
 
 export default function Home() {
   return (
@@ -11,7 +12,9 @@ export default function Home() {
 
       <h1>Welcome to the ENGINE Transformation Journey Planner </h1>
 
-      <Card title="Live arrivals"></Card>
+      <Card title="Live arrivals">
+        <List />
+      </Card>
 
       <footer>Tufan Butuner</footer>
     </div>
