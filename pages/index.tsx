@@ -12,9 +12,7 @@ export default function Home() {
 
       <h1>Welcome to the ENGINE Transformation Journey Planner </h1>
 
-      <Card title="Live arrivals">
-        <List />
-      </Card>
+      <List />
     </div>
   );
 }
