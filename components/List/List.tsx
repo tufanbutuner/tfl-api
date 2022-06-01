@@ -13,9 +13,9 @@ export default function List() {
       .catch((err) => console.log(err));
   };
 
-  const platformOne = data.filter(
-    (point) => point.platformName === "Westbound - Platform 1"
-  );
+  const platformOne = data
+    .filter((point) => point.platformName === "Westbound - Platform 1")
+    .sort((point) => point.timeToStation);
 
   const platformTwo = data.filter(
     (point) => point.platformName === "Eastbound - Platform 2"
@@ -25,9 +25,10 @@ export default function List() {
     fetchAPI();
     // console.log(data);
     // console.log(data.slice(0, 5));
-    platformOne.slice(0, 5);
-    platformTwo.slice(0, 5);
-
+    console.log(
+      platformOne.slice(0, 5).sort((a, b) => a.timeToStation - b.timeToStation)
+    );
+    // platformTwo.slice(0, 5);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -35,32 +36,36 @@ export default function List() {
     <>
       <Card title="Live arrivals for platform 1">
         <ListContainer>
-          {platformOne.slice(0, 5).map((point) => {
-            return (
-              <div key={point.id}>
-                <ul>
-                  <li>
-                    {point.towards},{point.timeToStation}
-                  </li>
-                </ul>
-              </div>
-            );
-          })}
+          {platformOne
+            .sort((a, b) => a.timeToStation - b.timeToStation)
+            .map((point) => {
+              return (
+                <div key={point.id}>
+                  <ul>
+                    <li>
+                      {point.towards},{point.timeToStation}
+                    </li>
+                  </ul>
+                </div>
+              );
+            })}
         </ListContainer>
       </Card>
       <Card title="Live arrivals for Platform 2">
         <ListContainer>
-          {platformTwo.slice(0, 5).map((point) => {
-            return (
-              <div key={point.id}>
-                <ul>
-                  <li>
-                    {point.towards},{point.timeToStation}
-                  </li>
-                </ul>
-              </div>
-            );
-          })}
+          {platformTwo
+            .sort((a, b) => a.timeToStation - b.timeToStation)
+            .map((point) => {
+              return (
+                <div key={point.id}>
+                  <ul>
+                    <li>
+                      {point.towards},{point.timeToStation}
+                    </li>
+                  </ul>
+                </div>
+              );
+            })}
         </ListContainer>
       </Card>
     </>
