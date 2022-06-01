@@ -15,8 +15,6 @@ export default function Home() {
       <Card title="Live arrivals">
         <List />
       </Card>
-
-      <footer>Tufan Butuner</footer>
     </div>
   );
 }

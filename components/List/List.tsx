@@ -15,16 +15,20 @@ export default function List() {
   useEffect(() => {
     fetchAPI();
     console.log(data);
+    console.log(data.slice(0, 5));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <ListContainer>
-      {data.map((point) => {
+      {data.slice(0, 5).map((point) => {
         return (
           <div key={point.id}>
             <ul>
-              <li>{point.towards}</li>
+              <li>
+                {point.towards},{point.timeToStation}
+              </li>
             </ul>
           </div>
         );
