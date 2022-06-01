@@ -1,3 +1,4 @@
+import Card from "../components/Card/Card";
 import Head from "next/head";
 
 export default function Home() {
@@ -9,6 +10,8 @@ export default function Home() {
       </Head>
 
       <h1>Welcome to the ENGINE Transformation Journey Planner </h1>
+
+      <Card title="Live arrivals"></Card>
 
       <footer>Tufan Butuner</footer>
     </div>
