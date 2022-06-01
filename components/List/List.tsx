@@ -1,7 +1,7 @@
+import { LineName, ListContainer } from "./styles";
 import React, { useEffect, useState } from "react";
 
 import Card from "../Card/Card";
-import { ListContainer } from "./styles";
 
 export default function List() {
   const [data, setData] = useState<any[]>([]);
@@ -13,9 +13,9 @@ export default function List() {
       .catch((err) => console.log(err));
   };
 
-  const platformOne = data
-    .filter((point) => point.platformName === "Westbound - Platform 1")
-    .sort((point) => point.timeToStation);
+  const platformOne = data.filter(
+    (point) => point.platformName === "Westbound - Platform 1"
+  );
 
   const platformTwo = data.filter(
     (point) => point.platformName === "Eastbound - Platform 2"
@@ -23,12 +23,7 @@ export default function List() {
 
   useEffect(() => {
     fetchAPI();
-    // console.log(data);
-    // console.log(data.slice(0, 5));
-    console.log(
-      platformOne.slice(0, 5).sort((a, b) => a.timeToStation - b.timeToStation)
-    );
-    // platformTwo.slice(0, 5);
+    console.log(platformTwo.sort((a, b) => a.timeToStation - b.timeToStation));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -44,6 +39,9 @@ export default function List() {
                   <ul>
                     <li>
                       {point.towards},{point.timeToStation}
+                      <LineName lineName={point.lineName}>
+                        {point.lineName}
+                      </LineName>
                     </li>
                   </ul>
                 </div>
@@ -61,6 +59,9 @@ export default function List() {
                   <ul>
                     <li>
                       {point.towards},{point.timeToStation}
+                      <LineName lineName={point.lineName}>
+                        {point.lineName}
+                      </LineName>
                     </li>
                   </ul>
                 </div>

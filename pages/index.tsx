@@ -9,9 +9,8 @@ export default function Home() {
         <title>ENGINE Transformation Journey Planner</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <h1>Welcome to the ENGINE Transformation Journey Planner </h1>
-
+      <h3>Great Portland Street Station Arrival Times</h3>
       <List />
     </div>
   );
