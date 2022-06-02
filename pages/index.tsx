@@ -1,6 +1,6 @@
-import Card from "../components/Card/Card";
 import Head from "next/head";
 import List from "../components/List/List";
+import { Title } from "./styles";
 
 export default function Home() {
   return (
@@ -9,8 +9,10 @@ export default function Home() {
         <title>ENGINE Transformation Journey Planner</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Welcome to the ENGINE Transformation Journey Planner</h1>
-      <h3>Great Portland Street Station Arrival Times</h3>
+
+      {/* <h1>ENGINE Transformation Journey Planner</h1> */}
+      <Title>Great Portland Street Underground Station</Title>
+
       <List />
     </div>
   );

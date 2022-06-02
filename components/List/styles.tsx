@@ -1,7 +1,19 @@
 import styled from "styled-components";
 
+export const PlatformsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`;
+PlatformsContainer.displayName = "PlatformsContainer";
+
 export const ListContainer = styled.div``;
 ListContainer.displayName = "ListContainer";
+
+export const TowardsTrain = styled.span`
+  font-weight: bold;
+  margin-right: 12px;
+`;
+TowardsTrain.displayName = "TowardsTrain";
 
 export const ArrivalList = styled.ul`
   list-style: none;

@@ -1,4 +1,11 @@
-import { ArrivalList, LineName, ListContainer, ListElement } from "./styles";
+import {
+  ArrivalList,
+  LineName,
+  ListContainer,
+  ListElement,
+  PlatformsContainer,
+  TowardsTrain,
+} from "./styles";
 import React, { useEffect, useState } from "react";
 
 import Card from "../Card/Card";
@@ -13,13 +20,23 @@ export default function List() {
       .catch((err) => console.log(err));
   };
 
-  const platformOne = data.filter(
-    (point) => point.platformName === "Westbound - Platform 1"
-  );
+  const platformOne = data
+    .filter((point) => point.platformName === "Westbound - Platform 1")
+    .sort((a, b) => a.timeToStation - b.timeToStation)
+    .slice(0, 5);
 
-  const platformTwo = data.filter(
-    (point) => point.platformName === "Eastbound - Platform 2"
-  );
+  const platformTwo = data
+    .filter((point) => point.platformName === "Eastbound - Platform 2")
+    .sort((a, b) => a.timeToStation - b.timeToStation)
+    .slice(0, 5);
+
+  function convert(time: number) {
+    var minute = Math.floor(time / 60);
+    if (minute < 1) {
+      return "Due";
+    }
+    return minute;
+  }
 
   useEffect(() => {
     fetchAPI();
@@ -28,15 +45,19 @@ export default function List() {
 
   return (
     <>
-      <Card title="Live arrivals at Platform 1">
-        <ListContainer>
-          {platformOne
-            .sort((a, b) => a.timeToStation - b.timeToStation)
-            .map((point) => {
+      <PlatformsContainer>
+        <Card title="Westbound - Platform 1">
+          <ListContainer>
+            {platformOne.map((point) => {
               return (
                 <ArrivalList key={point.id}>
                   <ListElement>
-                    {point.towards},{point.timeToStation}
+                    <TowardsTrain>{point.towards} </TowardsTrain>
+                    {convert(point.timeToStation) === "Due" ? (
+                      <>{convert(point.timeToStation)}</>
+                    ) : (
+                      <span>{convert(point.timeToStation)} min</span>
+                    )}
                     <LineName lineName={point.lineName}>
                       {point.lineName}
                     </LineName>
@@ -44,18 +65,21 @@ export default function List() {
                 </ArrivalList>
               );
             })}
-        </ListContainer>
-      </Card>
+          </ListContainer>
+        </Card>
 
-      <Card title="Live arrivals for Platform 2">
-        <ListContainer>
-          {platformTwo
-            .sort((a, b) => a.timeToStation - b.timeToStation)
-            .map((point) => {
+        <Card title="Eastbound - Platform 2">
+          <ListContainer>
+            {platformTwo.map((point) => {
               return (
                 <ArrivalList key={point.id}>
                   <ListElement>
-                    {point.towards},{point.timeToStation}
+                    <TowardsTrain>{point.towards}</TowardsTrain>
+                    {convert(point.timeToStation) === "Due" ? (
+                      <>{convert(point.timeToStation)}</>
+                    ) : (
+                      <span>{convert(point.timeToStation)} min</span>
+                    )}
                     <LineName lineName={point.lineName}>
                       {point.lineName}
                     </LineName>
@@ -63,8 +87,9 @@ export default function List() {
                 </ArrivalList>
               );
             })}
-        </ListContainer>
-      </Card>
+          </ListContainer>
+        </Card>
+      </PlatformsContainer>
     </>
   );
 }
