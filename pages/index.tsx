@@ -1,6 +1,6 @@
 import Head from "next/head";
 import List from "../components/List/List";
-import { Title } from "./styles";
+import { Title } from "../styles/styles";
 
 export default function Home() {
   return (
@@ -10,7 +10,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <h1>ENGINE Transformation Journey Planner</h1> */}
       <Title>Great Portland Street Underground Station</Title>
 
       <List />
