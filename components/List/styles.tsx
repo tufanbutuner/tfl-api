@@ -34,7 +34,7 @@ ListElement.displayName = "ListElement";
 
 export const LineName = styled.p<{ lineName?: string }>`
   font-size: 0.8rem;
-  margin-left: 12px;
+  margin-left: 8px;
   background-color: ${({ lineName }) =>
     lineName === "Hammersmith & City"
       ? "#D799AF"
@@ -48,3 +48,9 @@ export const LineName = styled.p<{ lineName?: string }>`
   padding: 4px 8px;
 `;
 LineName.displayName = "LineName";
+
+export const TimeToStation = styled.span`
+  margin-left: 24px;
+  margin-right: 36px;
+`;
+TimeToStation.displayName = "TimeToStation";

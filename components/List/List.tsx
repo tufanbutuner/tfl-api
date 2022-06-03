@@ -4,11 +4,12 @@ import {
   ListContainer,
   ListElement,
   PlatformsContainer,
+  TimeToStation,
   TowardsTrain,
 } from "./styles";
+import React, { useEffect } from "react";
 
 import Card from "../Card/Card";
-import React from "react";
 import useFetch from "../../hooks/useFetch";
 
 export default function List() {
@@ -24,61 +25,59 @@ export default function List() {
     return platform;
   };
 
-  function convert(time: number) {
+  const convert = (time: number) => {
     var minute = Math.floor(time / 60);
     if (minute < 1) {
       return "Due";
     }
     return minute;
-  }
+  };
 
   return (
-    <>
-      <PlatformsContainer>
-        <Card title="Westbound - Platform 1">
-          <ListContainer>
-            {filterPlatform("Westbound - Platform 1").map((point) => {
-              return (
-                <ArrivalList key={point.id}>
-                  <ListElement>
-                    <TowardsTrain>{point.towards} </TowardsTrain>
-                    {convert(point.timeToStation) === "Due" ? (
-                      <span>{convert(point.timeToStation)}</span>
-                    ) : (
-                      <span>{convert(point.timeToStation)} min</span>
-                    )}
-                    <LineName lineName={point.lineName}>
-                      {point.lineName}
-                    </LineName>
-                  </ListElement>
-                </ArrivalList>
-              );
-            })}
-          </ListContainer>
-        </Card>
+    <PlatformsContainer>
+      <Card title="Westbound - Platform 1">
+        <ListContainer>
+          {filterPlatform("Westbound - Platform 1").map((point) => {
+            return (
+              <ArrivalList key={point.id}>
+                <ListElement>
+                  <TowardsTrain>{point.towards}</TowardsTrain>
+                  <LineName lineName={point.lineName}>
+                    {point.lineName}
+                  </LineName>
+                  <TimeToStation>
+                    {convert(point.timeToStation) !== "Due"
+                      ? `${convert(point.timeToStation)} min`
+                      : convert(point.timeToStation)}
+                  </TimeToStation>
+                </ListElement>
+              </ArrivalList>
+            );
+          })}
+        </ListContainer>
+      </Card>
 
-        <Card title="Eastbound - Platform 2">
-          <ListContainer>
-            {filterPlatform("Eastbound - Platform 2").map((point) => {
-              return (
-                <ArrivalList key={point.id}>
-                  <ListElement>
-                    <TowardsTrain>{point.towards}</TowardsTrain>
-                    {convert(point.timeToStation) === "Due" ? (
-                      <>{convert(point.timeToStation)}</>
-                    ) : (
-                      <span>{convert(point.timeToStation)} min</span>
-                    )}
-                    <LineName lineName={point.lineName}>
-                      {point.lineName}
-                    </LineName>
-                  </ListElement>
-                </ArrivalList>
-              );
-            })}
-          </ListContainer>
-        </Card>
-      </PlatformsContainer>
-    </>
+      <Card title="Eastbound - Platform 2">
+        <ListContainer>
+          {filterPlatform("Eastbound - Platform 2").map((point) => {
+            return (
+              <ArrivalList key={point.id}>
+                <ListElement>
+                  <TowardsTrain>{point.towards}</TowardsTrain>
+                  <LineName lineName={point.lineName}>
+                    {point.lineName}
+                  </LineName>
+                  <TimeToStation>
+                    {convert(point.timeToStation) !== "Due"
+                      ? `${convert(point.timeToStation)} min`
+                      : convert(point.timeToStation)}
+                  </TimeToStation>
+                </ListElement>
+              </ArrivalList>
+            );
+          })}
+        </ListContainer>
+      </Card>
+    </PlatformsContainer>
   );
 }
