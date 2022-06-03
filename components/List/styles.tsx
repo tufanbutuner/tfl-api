@@ -35,7 +35,7 @@ ListElement.displayName = "ListElement";
 
 export const LineName = styled.p<{ lineName?: string }>`
   font-size: 0.8rem;
-  margin-left: 8px;
+  margin-left: 4px;
   background-color: ${({ lineName }) =>
     lineName === "Hammersmith & City"
       ? "#D799AF"
