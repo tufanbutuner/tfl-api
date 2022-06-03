@@ -6,19 +6,15 @@ import {
   PlatformsContainer,
   TowardsTrain,
 } from "./styles";
-import React, { useEffect, useState } from "react";
 
 import Card from "../Card/Card";
+import React from "react";
+import useFetch from "../../hooks/useFetch";
 
 export default function List() {
-  const [data, setData] = useState<any[]>([]);
-
-  const fetchAPI = () => {
-    fetch("https://api.tfl.gov.uk/StopPoint/940GZZLUGPS/arrivals?mode=tube")
-      .then((res) => res.json())
-      .then((data) => setData(data))
-      .catch((err) => console.log(err));
-  };
+  const { data } = useFetch(
+    "https://api.tfl.gov.uk/StopPoint/940GZZLUGPS/arrivals?mode=tube"
+  );
 
   const platformOne = data
     .filter((point) => point.platformName === "Westbound - Platform 1")
@@ -38,11 +34,6 @@ export default function List() {
     return minute;
   }
 
-  useEffect(() => {
-    fetchAPI();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <>
       <PlatformsContainer>
@@ -54,7 +45,7 @@ export default function List() {
                   <ListElement>
                     <TowardsTrain>{point.towards} </TowardsTrain>
                     {convert(point.timeToStation) === "Due" ? (
-                      <>{convert(point.timeToStation)}</>
+                      <span>{convert(point.timeToStation)}</span>
                     ) : (
                       <span>{convert(point.timeToStation)} min</span>
                     )}
