@@ -11,7 +11,6 @@ export default function useFetch(url: string) {
 
   useEffect(() => {
     fetchAPI();
-
     const timer = setInterval(() => {
       fetchAPI();
     }, 60 * 1000);

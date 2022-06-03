@@ -8,3 +8,11 @@ export const Title = styled.h3`
   font-size: 1.75rem;
 `;
 Title.displayName = "Title";
+
+export const Countdown = styled.span`
+  display: flex;
+  justify-content: end;
+  margin-right: 36px;
+  font-style: italic;
+`;
+Countdown.displayName = "Countdown";

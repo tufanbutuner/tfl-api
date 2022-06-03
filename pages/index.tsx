@@ -1,6 +1,7 @@
+import { Countdown, Title } from "../styles/styles";
+
 import Head from "next/head";
 import List from "../components/List/List";
-import { Title } from "../styles/styles";
 import { useState } from "react";
 
 export default function Home() {
@@ -15,7 +16,7 @@ export default function Home() {
       <Title>Great Portland Street Underground Station</Title>
 
       <List setTimeLeft={setTimeLeft} />
-      <span>List will update in {timeLeft} seconds</span>
+      <Countdown>Times will update in {timeLeft} seconds</Countdown>
     </div>
   );
 }

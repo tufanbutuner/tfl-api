@@ -9,6 +9,6 @@ CardContainer.displayName = "CardContainer";
 
 export const Title = styled.h3`
   font-size: 1.25rem;
-  margin-left: 12px;
+  margin: auto;
 `;
 Title.displayName = "Title";
