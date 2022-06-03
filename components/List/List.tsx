@@ -12,11 +12,14 @@ import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import useFetch from "../../hooks/useFetch";
 
-export default function List() {
+interface ListProps {
+  setTimeLeft: any;
+}
+
+export default function List({ setTimeLeft }: ListProps) {
   const { data } = useFetch(
     "https://api.tfl.gov.uk/StopPoint/940GZZLUGPS/arrivals?mode=tube"
   );
-  const [timeLeft, setTimeLeft] = useState(60);
 
   const filterPlatform = (platformName: string) => {
     const platform = data
@@ -36,7 +39,9 @@ export default function List() {
 
   useEffect(() => {
     const timerInterval = setInterval(() => {
-      setTimeLeft((timeLeft) => (timeLeft - 1 <= 0 ? 60 : timeLeft - 1));
+      setTimeLeft((timeLeft: number) =>
+        timeLeft - 1 <= 0 ? 60 : timeLeft - 1
+      );
     }, 1000);
     return () => {
       clearInterval(timerInterval);
@@ -46,7 +51,6 @@ export default function List() {
   return (
     <PlatformsContainer>
       <Card title="Westbound - Platform 1">
-        <div>List will update in {timeLeft} seconds</div>
         <ListContainer>
           {filterPlatform("Westbound - Platform 1").map((point) => {
             return (
