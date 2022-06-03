@@ -17,7 +17,7 @@ interface ListProps {
 }
 
 export default function List({ setTimeLeft }: ListProps) {
-  const { data } = useFetch(
+  const { data, loading } = useFetch(
     "https://api.tfl.gov.uk/StopPoint/940GZZLUGPS/arrivals?mode=tube"
   );
 
@@ -46,10 +46,12 @@ export default function List({ setTimeLeft }: ListProps) {
     return () => {
       clearInterval(timerInterval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <PlatformsContainer>
+      {data.length === 0 && <div>Loading...</div>}
       <Card title="Westbound - Platform 1">
         <ListContainer>
           {filterPlatform("Westbound - Platform 1").map((point) => {
