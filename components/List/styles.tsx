@@ -29,6 +29,7 @@ export const ListElement = styled.li`
   display: flex;
   align-items: center;
   padding: 10px 0px;
+  width: 100%;
 `;
 ListElement.displayName = "ListElement";
 
@@ -50,7 +51,7 @@ export const LineName = styled.p<{ lineName?: string }>`
 LineName.displayName = "LineName";
 
 export const TimeToStation = styled.span`
-  margin-left: 24px;
-  margin-right: 36px;
+  margin-left: auto;
+  margin-right: 24px;
 `;
 TimeToStation.displayName = "TimeToStation";
