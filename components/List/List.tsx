@@ -16,15 +16,13 @@ export default function List() {
     "https://api.tfl.gov.uk/StopPoint/940GZZLUGPS/arrivals?mode=tube"
   );
 
-  const platformOne = data
-    .filter((point) => point.platformName === "Westbound - Platform 1")
-    .sort((a, b) => a.timeToStation - b.timeToStation)
-    .slice(0, 5);
-
-  const platformTwo = data
-    .filter((point) => point.platformName === "Eastbound - Platform 2")
-    .sort((a, b) => a.timeToStation - b.timeToStation)
-    .slice(0, 5);
+  const filterPlatform = (platformName: string) => {
+    const platform = data
+      .filter((point) => point.platformName === platformName)
+      .sort((a, b) => a.timeToStation - b.timeToStation)
+      .slice(0, 5);
+    return platform;
+  };
 
   function convert(time: number) {
     var minute = Math.floor(time / 60);
@@ -39,7 +37,7 @@ export default function List() {
       <PlatformsContainer>
         <Card title="Westbound - Platform 1">
           <ListContainer>
-            {platformOne.map((point) => {
+            {filterPlatform("Westbound - Platform 1").map((point) => {
               return (
                 <ArrivalList key={point.id}>
                   <ListElement>
@@ -61,7 +59,7 @@ export default function List() {
 
         <Card title="Eastbound - Platform 2">
           <ListContainer>
-            {platformTwo.map((point) => {
+            {filterPlatform("Eastbound - Platform 2").map((point) => {
               return (
                 <ArrivalList key={point.id}>
                   <ListElement>
