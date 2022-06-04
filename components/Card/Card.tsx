@@ -1,6 +1,4 @@
 import { CardContainer, Title } from "./styles";
-import React, { useEffect, useState } from "react";
-
 interface CardProps {
   title?: string;
   children?: any;

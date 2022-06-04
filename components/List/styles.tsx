@@ -3,6 +3,13 @@ import styled from "styled-components";
 export const PlatformsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin: 0px 64px;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+    min-width: 456px;
+    margin: 0px;
+  }
 `;
 PlatformsContainer.displayName = "PlatformsContainer";
 
@@ -18,7 +25,7 @@ TowardsTrain.displayName = "TowardsTrain";
 export const ArrivalList = styled.ul`
   list-style: none;
   display: flex;
-  background-color: #ededed;
+  background-color: #f8f8f8;
   border: 1px solid #dfdfdf;
   border-radius: 12px;
   margin: 12px 24px;

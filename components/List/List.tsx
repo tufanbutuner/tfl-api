@@ -7,7 +7,7 @@ import {
   TimeToStation,
   TowardsTrain,
 } from "./styles";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import Card from "../Card/Card";
 import useFetch from "../../hooks/useFetch";
@@ -17,7 +17,7 @@ interface ListProps {
 }
 
 export default function List({ setTimeLeft }: ListProps) {
-  const { data, loading } = useFetch(
+  const { data } = useFetch(
     "https://api.tfl.gov.uk/StopPoint/940GZZLUGPS/arrivals?mode=tube"
   );
 

@@ -4,6 +4,10 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 12px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
 `;
 CardContainer.displayName = "CardContainer";
 
