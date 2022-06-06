@@ -52,6 +52,9 @@ export default function List({ setTimeLeft }: ListProps) {
   return (
     <PlatformsContainer>
       {loading && <div>Loading...</div>}
+      {!data && (
+        <span data-testid="no-live-updates">No live updates available</span>
+      )}
       <Card title="Westbound - Platform 1">
         <ListContainer>
           {filterPlatform("Westbound - Platform 1").map((point) => {

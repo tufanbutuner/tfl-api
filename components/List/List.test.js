@@ -43,10 +43,18 @@ global.fetch = jest.fn(() =>
   })
 );
 
-describe("Trains on arrivals list appear", () => {
+describe("ListComponent", () => {
   test("shows arriving train", () => {
-    render(<List />);
-    const arrivingTrain = screen.findAllByTestId("time-to-station");
+    const id = "time-to-station";
+    const { findAllByTestId } = render(<List />);
+    const arrivingTrain = findAllByTestId(id);
     waitFor(() => expect(arrivingTrain).toBeInTheDocument());
+  });
+
+  test("no trains arriving", () => {
+    const id = "no-live-updates";
+    const { findByTestId } = render(<List />);
+    const noArrivals = findByTestId(id);
+    waitFor(() => expect(noArrivals).toBeInTheDocument());
   });
 });
