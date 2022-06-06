@@ -13,11 +13,11 @@ import Card from "../Card/Card";
 import useFetch from "../../hooks/useFetch";
 
 interface ListProps {
-  setTimeLeft: any;
+  setTimeLeft?: any;
 }
 
 export default function List({ setTimeLeft }: ListProps) {
-  const { data } = useFetch(
+  const { data, loading } = useFetch(
     "https://api.tfl.gov.uk/StopPoint/940GZZLUGPS/arrivals?mode=tube"
   );
 
@@ -51,7 +51,10 @@ export default function List({ setTimeLeft }: ListProps) {
 
   return (
     <PlatformsContainer>
-      {data.length === 0 && <div>Loading...</div>}
+      {loading && <div>Loading...</div>}
+      {!data && (
+        <span data-testid="no-live-updates">No live updates available</span>
+      )}
       <Card title="Westbound - Platform 1">
         <ListContainer>
           {filterPlatform("Westbound - Platform 1").map((point) => {
@@ -62,7 +65,7 @@ export default function List({ setTimeLeft }: ListProps) {
                   <LineName lineName={point.lineName}>
                     {point.lineName}
                   </LineName>
-                  <TimeToStation>
+                  <TimeToStation data-testid="time-to-station">
                     {convert(point.timeToStation) !== "Due"
                       ? `${convert(point.timeToStation)} min`
                       : convert(point.timeToStation)}
