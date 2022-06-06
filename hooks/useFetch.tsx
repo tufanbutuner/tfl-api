@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 
+import { IArrivals } from "../types/arrivals";
+
 export default function useFetch(url: string) {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<IArrivals[]>([]);
   const [loading, setLoading] = useState(true);
 
   const fetchAPI = async () => {
