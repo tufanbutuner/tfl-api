@@ -1,11 +1,10 @@
-import { Container, Countdown, Subtitle, Title } from "../styles/styles";
+import { Container, Subtitle, Title } from "../styles/styles";
 
 import Head from "next/head";
 import List from "../components/List/List";
-import { useState } from "react";
+import Status from "../components/Status/Status";
 
 export default function Home() {
-  const [timeLeft, setTimeLeft] = useState(60);
   return (
     <Container>
       <Head>
@@ -19,8 +18,8 @@ export default function Home() {
       <Title>Great Portland Street Underground Station</Title>
       <Subtitle>Tube Arrival Times</Subtitle>
 
-      <List setTimeLeft={setTimeLeft} />
-      <Countdown>Times will update in {timeLeft} seconds</Countdown>
+      <Status />
+      <List />
     </Container>
   );
 }

@@ -23,11 +23,3 @@ export const Subtitle = styled.h4`
   margin: 0px 0px 60px 0px;
 `;
 Subtitle.displayName = "Subtitle";
-
-export const Countdown = styled.span`
-  display: flex;
-  justify-content: end;
-  margin-right: 36px;
-  font-style: italic;
-`;
-Countdown.displayName = "Countdown";

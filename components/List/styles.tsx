@@ -62,3 +62,24 @@ export const TimeToStation = styled.span`
   margin-right: 24px;
 `;
 TimeToStation.displayName = "TimeToStation";
+
+export const LiveUpdatesContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+LiveUpdatesContainer.displayName = "LiveUpdatesContainer";
+
+export const LiveUpdate = styled.span`
+  font-size: 1.5rem;
+  margin-left: 4px;
+`;
+LiveUpdate.displayName = "LiveUpdate";
+
+export const Countdown = styled.span`
+  display: flex;
+  justify-content: end;
+  margin-right: 36px;
+  font-style: italic;
+`;
+Countdown.displayName = "Countdown";
