@@ -21,7 +21,7 @@
     "**/*.ts",
     "**/*.tsx",
     "jest.config.js",
-    "hooks/useFetch.test.js"
+    "hooks/List.test.js"
   ],
   "exclude": ["node_modules"]
 }
