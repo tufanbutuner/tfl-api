@@ -2,6 +2,7 @@ import { Container, Subtitle, Title } from "../styles/styles";
 
 import Head from "next/head";
 import List from "../components/List/List";
+import Platform from "../components/Platform/Platform";
 import Status from "../components/Status/Status";
 
 export default function Home() {

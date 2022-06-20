@@ -13,14 +13,27 @@ import {
 import React, { useEffect, useState } from "react";
 
 import Card from "../Card/Card";
+import Platform from "../Platform/Platform";
 import { TiWarningOutline } from "react-icons/ti";
 import useFetch from "../../hooks/useFetch";
 
 export default function List() {
   const { data, loading } = useFetch(
-    "https://api.tfl.gov.uk/StopPoint/940GZZLUGPS/arrivals?mode=tube"
+    `https://api.tfl.gov.uk/StopPoint/940GZZLUOXC/arrivals?mode=tube`
   );
   const [timeLeft, setTimeLeft] = useState(60);
+
+  // useEffect(() => {
+  //   const timerInterval = setInterval(() => {
+  //     setTimeLeft((timeLeft: number) =>
+  //       timeLeft - 1 <= 0 ? 60 : timeLeft - 1
+  //     );
+  //   }, 1000);
+  //   return () => {
+  //     clearInterval(timerInterval);
+  //   };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const filterPlatform = (platformName: string) => {
     const platform = data
@@ -39,16 +52,11 @@ export default function List() {
   };
 
   useEffect(() => {
-    const timerInterval = setInterval(() => {
-      setTimeLeft((timeLeft: number) =>
-        timeLeft - 1 <= 0 ? 60 : timeLeft - 1
-      );
-    }, 1000);
-    return () => {
-      clearInterval(timerInterval);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    data && console.log(data);
+    // console.log(platformSet.forEach((platform) => console.log(platform)));
+    // console.log(Array.from(platformSet));
+    // console.log(filterPlatform("Southbound - Platform 3"));
+  }, [data]);
 
   return (
     <>
@@ -61,10 +69,9 @@ export default function List() {
         </LiveUpdatesContainer>
       ) : (
         <PlatformsContainer>
-          {loading && <div>Loading...</div>}
-          <Card title="Westbound - Platform 1">
+          {/* <Card title="Westbound - Platform 1">
             <ListContainer>
-              {filterPlatform("Westbound - Platform 1").map((point) => {
+              {data.map((point) => {
                 return (
                   <ArrivalList key={point.id}>
                     <ListElement>
@@ -82,11 +89,11 @@ export default function List() {
                 );
               })}
             </ListContainer>
-          </Card>
+          </Card> */}
 
-          <Card title="Eastbound - Platform 2">
+          {/* <Card title="Eastbound - Platform 2">
             <ListContainer>
-              {filterPlatform("Eastbound - Platform 2").map((point) => {
+              {data.map((point) => {
                 return (
                   <ArrivalList key={point.id}>
                     <ListElement>
@@ -104,7 +111,15 @@ export default function List() {
                 );
               })}
             </ListContainer>
-          </Card>
+          </Card> */}
+          {/* {platforms?.map((platform: any) => {
+              return (
+                <div key={platform}>
+                  <span>{platform}</span>
+                </div>
+              );
+            })} */}
+          <Platform />
           <Countdown>Times will update in {timeLeft} seconds</Countdown>
         </PlatformsContainer>
       )}

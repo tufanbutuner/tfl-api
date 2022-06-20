@@ -16,9 +16,9 @@ export default function Status({}: StatusProps) {
     "https://api.tfl.gov.uk/Line/circle,metropolitan,hammersmith-city/Status"
   );
 
-  useEffect(() => {
-    data && console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   data && console.log(data);
+  // }, [data]);
 
   return (
     <StatusContainer>
