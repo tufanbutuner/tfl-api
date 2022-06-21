@@ -13,7 +13,7 @@ interface StatusProps {}
 
 export default function Status({}: StatusProps) {
   const { data, loading } = useFetch(
-    "https://api.tfl.gov.uk/Line/circle,metropolitan,hammersmith-city/Status"
+    "https://api.tfl.gov.uk/Line/circle,metropolitan,hammersmith-city,bakerloo/Status"
   );
 
   // useEffect(() => {

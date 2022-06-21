@@ -16,14 +16,6 @@ export default function Platform() {
     `https://api.tfl.gov.uk/StopPoint/940GZZLUOXC/arrivals?mode=tube`
   );
 
-  // const filterPlatform = (platformName: any) => {
-  //   const platform = data
-  //     .filter((point) => point.platformName === platformName)
-  //     .sort((a, b) => a.timeToStation - b.timeToStation)
-  //     .slice(0, 5);
-  //   return platform;
-  // };
-
   const convert = (time: number) => {
     var minute = Math.floor(time / 60);
     if (minute < 1) {
@@ -56,12 +48,22 @@ export default function Platform() {
   });
   const platforms = Array.from(platformSet);
 
+  const filterPlatform = (platformName: any) => {
+    const platform = data
+      // .filter((point) => point.platformName === platformName)
+      .sort((a, b) => a.timeToStation - b.timeToStation)
+      .slice(0, 5);
+    return platform;
+  };
+
   useEffect(() => {
     // data && console.log(data);
     // console.log(platformSet.forEach((platform) => console.log(platform)));
     // console.log(Array.from(platformSet));
     console.log(platforms);
-  }, [data, platforms]);
+    console.log(platforms[0]);
+    console.log(filterPlatform(platforms));
+  }, [data, platforms, filterPlatform]);
 
   return (
     // <PlatformContainer>
@@ -83,11 +85,29 @@ export default function Platform() {
     // </PlatformContainer>
     <PlatformContainer>
       <Card>
-        {platforms?.map((platform: any, point) => {
+        {/* {platforms?.map((platform: any) => {
           return (
             <ArrivalList key={platform.id}>
               <ListElement>{platform}</ListElement>
             </ArrivalList>
+          );
+        })} */}
+        {filterPlatform(platforms).map((point: any, platform: any) => {
+          return (
+            <>
+              <ArrivalList key={platform.id}>
+                <ListElement>{platform}</ListElement>
+              </ArrivalList>
+              <ListElement>
+                <TowardsTrain>{point.towards}</TowardsTrain>
+                <LineName lineName={point.lineName}>{point.lineName}</LineName>
+                <TimeToStation>
+                  {convert(point.timeToStation) !== "Due"
+                    ? `${convert(point.timeToStation)} min`
+                    : convert(point.timeToStation)}
+                </TimeToStation>
+              </ListElement>
+            </>
           );
         })}
       </Card>
