@@ -19,7 +19,7 @@ import useFetch from "../../hooks/useFetch";
 
 export default function List() {
   const { data, loading } = useFetch(
-    `https://api.tfl.gov.uk/StopPoint/940GZZLUOXC/arrivals?mode=tube`
+    `https://api.tfl.gov.uk/StopPoint/940GZZLUGPS/arrivals?mode=tube`
   );
   const [timeLeft, setTimeLeft] = useState(60);
 
