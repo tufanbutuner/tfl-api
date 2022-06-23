@@ -52,7 +52,7 @@ export default function List() {
   };
 
   useEffect(() => {
-    data && console.log(data);
+    // data && console.log(data);
     // console.log(platformSet.forEach((platform) => console.log(platform)));
     // console.log(Array.from(platformSet));
     // console.log(filterPlatform("Southbound - Platform 3"));
@@ -119,7 +119,10 @@ export default function List() {
                 </div>
               );
             })} */}
-          <Platform />
+          <Card>
+            <Platform />
+          </Card>
+
           <Countdown>Times will update in {timeLeft} seconds</Countdown>
         </PlatformsContainer>
       )}

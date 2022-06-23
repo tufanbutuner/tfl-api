@@ -15,6 +15,7 @@ export default function Platform() {
   const { data } = useFetch(
     `https://api.tfl.gov.uk/StopPoint/940GZZLUGPS/arrivals?mode=tube`
   );
+  const platformSet = new Set();
 
   const convert = (time: number) => {
     var minute = Math.floor(time / 60);
@@ -43,17 +44,16 @@ export default function Platform() {
   // }, [data, platformSet]);
 
   const filterPlatform = useCallback(
-    (platformName: any) => {
+    (platformName?: any) => {
       const platform = data
         .filter((point) => point.platformName === platformName)
-        .sort((a, b) => a.timeToStation - b.timeToStation);
-      // .slice(0, 5);
+        .sort((a, b) => a.timeToStation - b.timeToStation)
+        .slice(0, 5);
       return platform;
     },
     [data]
   );
 
-  const platformSet = new Set();
   data.forEach((point: any) => {
     point.platformName && platformSet.add(point.platformName);
   });
@@ -62,10 +62,12 @@ export default function Platform() {
   useEffect(() => {
     // data && console.log(data);
     // console.log(platformSet.forEach((platform) => console.log(platform)));
-    // console.log(Array.from(platformSet));
-    console.log(platforms);
-    console.log(filterPlatform(platforms[0]));
-    console.log(filterPlatform(platforms[1]));
+
+    // console.log(platforms);
+    // console.log(filterPlatform(platforms[0]));
+    // console.log(filterPlatform(platforms[1]));
+    // console.log(platforms.toString());
+    console.log(filterPlatform(platforms.toString()));
   }, [data, platforms, filterPlatform]);
 
   return (
@@ -87,35 +89,59 @@ export default function Platform() {
     //   })}
     // </PlatformContainer>
     <PlatformContainer>
-      <Card>
-        {platforms?.map((platform: any) => {
-          return (
-            <ArrivalList key={platform.id}>
-              <ListElement>{platform}</ListElement>
-            </ArrivalList>
-          );
-        })}
-        {filterPlatform(platforms).map((point: any) => {
-          return (
-            <>
-              <ArrivalList key={point.id}>
-                <ListElement>{point.platformName}</ListElement>
-                <ListElement>
-                  <TowardsTrain>{point.towards}</TowardsTrain>
-                  <LineName lineName={point.lineName}>
-                    {point.lineName}
-                  </LineName>
-                  <TimeToStation>
-                    {convert(point.timeToStation) !== "Due"
-                      ? `${convert(point.timeToStation)} min`
-                      : convert(point.timeToStation)}
-                  </TimeToStation>
-                </ListElement>
+      {filterPlatform(platforms[0]).map((point: any) => {
+        {
+          platforms?.map((platform: any) => {
+            return (
+              <ArrivalList key={platform.id}>
+                <ListElement>{platform}</ListElement>
               </ArrivalList>
-            </>
-          );
-        })}
-      </Card>
+            );
+          });
+        }
+        return (
+          <>
+            <ArrivalList key={point.id}>
+              <ListElement>
+                <TowardsTrain>{point.towards}</TowardsTrain>
+                <LineName lineName={point.lineName}>{point.lineName}</LineName>
+                <TimeToStation>
+                  {convert(point.timeToStation) !== "Due"
+                    ? `${convert(point.timeToStation)} min`
+                    : convert(point.timeToStation)}
+                </TimeToStation>
+              </ListElement>
+            </ArrivalList>
+          </>
+        );
+      })}
+      {/* {filterPlatform(platforms[1]).map((point: any) => {
+        {
+          platforms?.map((platform: any) => {
+            return (
+              <ArrivalList key={platform.id}>
+                <ListElement>{platform}</ListElement>
+              </ArrivalList>
+            );
+          });
+        }
+        return (
+          <>
+            <ArrivalList key={point.id}>
+              <ListElement>{point.platformName}</ListElement>
+              <ListElement>
+                <TowardsTrain>{point.towards}</TowardsTrain>
+                <LineName lineName={point.lineName}>{point.lineName}</LineName>
+                <TimeToStation>
+                  {convert(point.timeToStation) !== "Due"
+                    ? `${convert(point.timeToStation)} min`
+                    : convert(point.timeToStation)}
+                </TimeToStation>
+              </ListElement>
+            </ArrivalList>
+          </>
+        );
+      })} */}
     </PlatformContainer>
   );
 }
