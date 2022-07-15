@@ -16,7 +16,7 @@ export default function Home() {
         />
       </Head>
 
-      <Title>Great Portland Street Underground Station</Title>
+      <Title>Great Portland Street Station</Title>
       <Subtitle>Tube Arrival Times</Subtitle>
 
       <Status />
