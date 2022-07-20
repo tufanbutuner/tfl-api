@@ -2,8 +2,7 @@ import { Container, Subtitle, Title } from "../styles/styles";
 
 import Head from "next/head";
 import List from "../components/List/List";
-import Platform from "../components/Platform/Platform";
-import Status from "../components/Status/Status";
+import SearchBar from "../components/SearchBar/SearchBar";
 
 export default function Home() {
   return (
@@ -19,7 +18,8 @@ export default function Home() {
       <Title>Great Portland Street Station</Title>
       <Subtitle>Tube Arrival Times</Subtitle>
 
-      <Status />
+      {/* <Status /> */}
+      <SearchBar />
       <List />
     </Container>
   );
