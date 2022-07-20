@@ -1,10 +1,14 @@
 import { SearchBarContainer } from "./styles";
 import { useEffect, useState } from "react";
+import useDebounce from "../../hooks/useDebounce";
+
 interface Props {}
 
 export default function SearchBar({}: Props) {
   const [stations, setStations] = useState<any>();
   const [search, setSearch] = useState<string | null>(null);
+
+  const debouncedSearch = useDebounce(search, 500);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -13,6 +17,9 @@ export default function SearchBar({}: Props) {
       ).then((res) => res.json());
       setStations(data?.matches);
     };
+    if (debouncedSearch) fetchData();
+  }, [debouncedSearch]);
+
   return (
     <SearchBarContainer>
       <span>Search Bar</span>
@@ -24,6 +31,8 @@ export default function SearchBar({}: Props) {
         />
       </div>
       <div className="dataResult">
+        {stations?.map((station: any) => {
+          return <p key={station.id}>{station.name}</p>;
         })}
       </div>
     </SearchBarContainer>
