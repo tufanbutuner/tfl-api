@@ -47,40 +47,63 @@ export default function Platform({ selected, setSelected }: Props) {
   //   [platform]
   // );
 
-  const filterPlatform = () => {
-    platform &&
-      Object.keys(platform).forEach((p: any) => {
-        console.log(p, platform[p]);
-      });
-  };
+  // const filterPlatform = () => {
+  //   platform &&
+  //     Object.keys(platform).forEach((p: any) => {
+  //       console.log(p, platform[p]);
+  //     });
+  // };
 
-  let content;
+  // let content;
 
-  {
-    platform &&
-      Object.keys(platform).forEach((p: any) => {
-        content = platform[p].map((point: any) => {
-          // console.log(point.id);
-          <PlatformContainer>
-            {/* <ArrivalList>
+  // {
+  //   platform &&
+  //     Object.keys(platform).forEach((p: any) => {
+  //       content = platform[p].map((point: any) => {
+  //         // console.log(point.id);
+  //         <PlatformContainer>
+  //           {/* <ArrivalList>
+  //             <ListElement>
+  //               <span>{point.platformName}</span>
+  //               <TowardsTrain>{point.towards}</TowardsTrain>
+  //               <LineName lineName={point.lineName}>{point.lineName}</LineName>
+  //               <TimeToStation>
+  //                 {/* {convert(point.timeToStation) !== "Due"
+  //                     ? `${convert(point.timeToStation)} min`
+  //                     : convert(point.timeToStation)} 
+  //                 Due
+  //               </TimeToStation>
+  //             </ListElement>
+  //           </ArrivalList> */}
+  //           <p>{point.id}</p>
+  //         </PlatformContainer>;
+  //       });
+  //     });
+  // }
+  // console.log(content);
+
+  // return <>{content}</>;
+
+  if (!platform) return;
+  return Object.keys(platform).map((s: any) => {
+    return platform[s]
+    .sort((a: any, b: any) => a.timeToStation - b.timeToStation)
+    .slice(0, 2)
+    .map((point: any) => {
+      return <>
+        <PlatformContainer>
+          <ArrivalList>
               <ListElement>
                 <span>{point.platformName}</span>
                 <TowardsTrain>{point.towards}</TowardsTrain>
                 <LineName lineName={point.lineName}>{point.lineName}</LineName>
                 <TimeToStation>
-                  {/* {convert(point.timeToStation) !== "Due"
-                      ? `${convert(point.timeToStation)} min`
-                      : convert(point.timeToStation)} 
-                  Due
+                  { convert(point.timeToStation) !== "Due" ? `${convert(point.timeToStation)} min` : convert(point.timeToStation)} 
                 </TimeToStation>
               </ListElement>
-            </ArrivalList> */}
-            <p>{point.id}</p>
+            </ArrivalList>
           </PlatformContainer>;
-        });
-      });
-  }
-  console.log(content);
-
-  return <>{content}</>;
+      </>;
+    })
+  });
 }
