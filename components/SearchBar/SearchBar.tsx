@@ -1,40 +1,52 @@
-import { SearchBarContainer } from "./styles";
+import {
+  SearchBarContainer,
+  SearchInput,
+  SearchResults,
+  Station,
+} from "./styles";
 import { useEffect, useState } from "react";
 import useDebounce from "../../hooks/useDebounce";
 
-interface Props {}
+interface Props {
+  selected?: any;
+  setSelected?: any;
+}
 
-export default function SearchBar({}: Props) {
-  const [stations, setStations] = useState<any>();
+export default function SearchBar({ selected, setSelected }: Props) {
+  const [stations, setStations] = useState<any[]>();
   const [search, setSearch] = useState<string | null>(null);
 
-  const debouncedSearch = useDebounce(search, 500);
+  let debouncedSearch = useDebounce(search, 500);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetch(
-        `https://api.tfl.gov.uk/Stoppoint/Search/${debouncedSearch}?modes=tube`
-      ).then((res) => res.json());
-      setStations(data?.matches);
-    };
-    if (debouncedSearch) fetchData();
+    if (!debouncedSearch) return;
+    fetch(
+      `https://api.tfl.gov.uk/Stoppoint/Search/${debouncedSearch}?modes=tube`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setStations(data.matches);
+      });
   }, [debouncedSearch]);
 
   return (
     <SearchBarContainer>
-      <span>Search Bar</span>
-      <div className="searchInput">
-        <input
-          type="search"
-          placeholder="search"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
-      <div className="dataResult">
-        {stations?.map((station: any) => {
-          return <p key={station.id}>{station.name}</p>;
-        })}
-      </div>
+      <SearchInput
+        type="search"
+        placeholder="Search for a station..."
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      {stations?.length !== 0 && (
+        <SearchResults>
+          {stations?.map((station: any) => {
+            return (
+              <Station key={station.id} onClick={() => setSelected(station.id)}>
+                {station.name}
+              </Station>
+            );
+          })}
+        </SearchResults>
+      )}
     </SearchBarContainer>
   );
 }

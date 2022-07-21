@@ -17,9 +17,14 @@ import Platform from "../Platform/Platform";
 import { TiWarningOutline } from "react-icons/ti";
 import useFetch from "../../hooks/useFetch";
 
-export default function List() {
+interface Props {
+  selected?: any;
+  setSelected?: any;
+}
+
+export default function List({ selected, setSelected }: Props) {
   const { data, loading } = useFetch(
-    `https://api.tfl.gov.uk/StopPoint/940GZZLUGPS/arrivals?mode=tube`
+    `https://api.tfl.gov.uk/StopPoint/${selected}/arrivals?mode=tube`
   );
   const [timeLeft, setTimeLeft] = useState(60);
 
@@ -34,22 +39,6 @@ export default function List() {
   //   };
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
-
-  const filterPlatform = (platformName: string) => {
-    const platform = data
-      .filter((point) => point.platformName === platformName)
-      .sort((a, b) => a.timeToStation - b.timeToStation)
-      .slice(0, 5);
-    return platform;
-  };
-
-  const convert = (time: number) => {
-    var minute = Math.floor(time / 60);
-    if (minute < 1) {
-      return "Due";
-    }
-    return minute;
-  };
 
   useEffect(() => {
     // data && console.log(data);
