@@ -7,7 +7,7 @@ import {
   TowardsTrain,
 } from "./styles";
 import React, { useCallback, useEffect, useState } from "react";
-import _ from "lodash";
+import lodash from "lodash";
 import { TiPointOfInterest } from "react-icons/ti";
 interface Props {
   selected?: any;
@@ -28,10 +28,9 @@ export default function Platform({ selected, setSelected }: Props) {
   useEffect(() => {
     if (!selected) return;
     fetch(`https://api.tfl.gov.uk/StopPoint/${selected}/arrivals?mode=tube`)
-      .then((response) => response.json())
+      .then((r) => r.json())
       .then((data) => {
-        var lmao = _.groupBy(data, (d) => d.platformName);
-        setPlatform(lmao);
+        setPlatform(lodash.groupBy(data, (d) => d.platformName));
       });
   }, [selected]);
 
