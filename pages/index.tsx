@@ -13,20 +13,20 @@ export default function Home() {
   return (
     <Container>
       <Head>
-        <title>ENGINE Transformation Journey Planner</title>
+        <title>Transform Journey Planner</title>
         <link
           rel="icon"
-          href="https://www.enginegroup.com/uk/icons/icon-48x48.png"
+          href="https://static.wixstatic.com/media/82ad3e_99fbac5aa96e4b91b5d2460fcd9181a7~mv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/82ad3e_99fbac5aa96e4b91b5d2460fcd9181a7~mv2.png"
         />
       </Head>
 
       <Title>Tube Platform Finder</Title>
       <Subtitle>Train Arrival Times</Subtitle>
-      <h4>current station id: {selected}</h4>
 
       <Status />
       <SearchBar selected={selected} setSelected={setSelected} />
-      <Platform selected={selected} setSelected={setSelected} />
+      <h4>current station id: {selected}</h4>
+      <Platform selected={selected} />
     </Container>
   );
 }
