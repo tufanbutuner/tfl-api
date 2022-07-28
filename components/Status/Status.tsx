@@ -5,20 +5,14 @@ import {
   StatusSeverity,
 } from "./styles";
 
-import { useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 
-// import { } from "./styles";
 interface StatusProps {}
 
 export default function Status({}: StatusProps) {
-  const { data, loading } = useFetch(
+  const { data } = useFetch(
     "https://api.tfl.gov.uk/Line/circle,metropolitan,hammersmith-city,bakerloo/Status"
   );
-
-  // useEffect(() => {
-  //   data && console.log(data);
-  // }, [data]);
 
   return (
     <StatusContainer>

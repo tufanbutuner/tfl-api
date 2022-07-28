@@ -1,14 +1,13 @@
-import { Container, Subtitle, Title } from "../styles/styles";
+import { Container, Subtitle, Title, StationId } from "../styles/styles";
 
 import Head from "next/head";
-import List from "../components/List/List";
 import SearchBar from "../components/SearchBar/SearchBar";
 import { useState } from "react";
 import Platform from "../components/Platform/Platform";
 import Status from "../components/Status/Status";
 
 export default function Home() {
-  const [selected, setSelected] = useState("940GZZLUVIC");
+  const [selected, setSelected] = useState("940GZZLUGPS");
 
   return (
     <Container>
@@ -24,8 +23,9 @@ export default function Home() {
       <Subtitle>Train Arrival Times</Subtitle>
 
       <Status />
+      <StationId>current station id: {selected}</StationId>
       <SearchBar selected={selected} setSelected={setSelected} />
-      <h4>current station id: {selected}</h4>
+
       <Platform selected={selected} />
     </Container>
   );

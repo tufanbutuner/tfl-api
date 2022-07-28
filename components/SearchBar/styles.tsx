@@ -15,7 +15,7 @@ export const SearchInput = styled.input`
   background: #f2f2f2;
   padding: 12px;
   border-radius: 4px;
-  width: 248px;
+  width: 60%;
 
   &:focus {
     border-color: rgba(0, 0, 0, 0.3);
@@ -27,7 +27,7 @@ SearchInput.displayName = "SearchInput";
 export const SearchResults = styled.div`
   padding: 12px;
   margin-top: 40px;
-  width: 248px;
+  width: 64%;
   height: 150px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;

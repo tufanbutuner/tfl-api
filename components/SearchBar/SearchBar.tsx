@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default function SearchBar({ selected, setSelected }: Props) {
-  const [stations, setStations] = useState<any[]>();
+  const [stations, setStations] = useState<any[]>([]);
   const [search, setSearch] = useState<string | null>(null);
 
   let debouncedSearch = useDebounce(search, 500);
@@ -36,11 +36,17 @@ export default function SearchBar({ selected, setSelected }: Props) {
         placeholder="Search for a station..."
         onChange={(e) => setSearch(e.target.value)}
       />
-      {stations?.length !== 0 && (
+      {stations.length !== 0 && (
         <SearchResults>
           {stations?.map((station: any) => {
             return (
-              <Station key={station.id} onClick={() => setSelected(station.id)}>
+              <Station
+                id="station-name"
+                key={station.id}
+                onClick={() => {
+                  setSelected(station.id);
+                }}
+              >
                 {station.name}
               </Station>
             );

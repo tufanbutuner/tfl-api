@@ -3,6 +3,12 @@ import styled from "styled-components";
 export const Container = styled.div``;
 Container.displayName = "Container";
 
+export const StationId = styled.h4`
+  display: flex;
+  justify-content: center;
+`;
+StationId.displayName = "StationId";
+
 export const Title = styled.h3`
   display: flex;
   align-items: center;
