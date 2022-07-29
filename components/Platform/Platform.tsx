@@ -7,7 +7,7 @@ import {
   TowardsTrain,
   PlatformName,
 } from "./styles";
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import lodash from "lodash";
 interface Props {
   selected?: any;
