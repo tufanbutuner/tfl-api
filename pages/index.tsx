@@ -23,9 +23,9 @@ export default function Home() {
       <Subtitle>Train Arrival Times</Subtitle>
 
       <Status />
-      <StationId>current station id: {selected}</StationId>
-      <SearchBar selected={selected} setSelected={setSelected} />
 
+      <SearchBar selected={selected} setSelected={setSelected} />
+      <StationId>current station id: {selected}</StationId>
       <Platform selected={selected} />
     </Container>
   );
