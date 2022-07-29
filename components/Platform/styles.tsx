@@ -3,6 +3,11 @@ import styled from "styled-components";
 export const PlatformContainer = styled.div``;
 PlatformContainer.displayName = "PlatformContainer";
 
+export const PlatformName = styled.span`
+  margin-right: 12px;
+`;
+PlatformName.displayName = "PlatformName";
+
 export const PlatformsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -49,10 +54,30 @@ export const LineName = styled.p<{ lineName?: string }>`
   background-color: ${({ lineName }) =>
     lineName === "Hammersmith & City"
       ? "#D799AF"
+      : lineName === "Victoria"
+      ? "#00A0E2"
+      : lineName === "District"
+      ? "#007229"
+      : lineName === "Bakerloo"
+      ? "#894e24"
       : lineName === "Circle"
       ? "#ffce00"
+      : lineName === "Central"
+      ? "#dc241f"
+      : lineName === "Northern"
+      ? "#000"
+      : lineName === "Jubilee"
+      ? "#6a7278"
       : "#751056"};
-  color: ${({ lineName }) => (lineName === "Metropolitan" ? "#fff" : "#000")};
+  color: ${({ lineName }) =>
+    lineName === "Metropolitan" ||
+    lineName === "District" ||
+    lineName === "Bakerloo" ||
+    lineName === "Central" ||
+    lineName === "Northern" ||
+    lineName === "Jubilee"
+      ? "#fff"
+      : "#000"};
   border-radius: 8px;
   border: none;
   width: fit-content;
