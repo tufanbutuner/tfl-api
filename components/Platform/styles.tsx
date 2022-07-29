@@ -3,6 +3,11 @@ import styled from "styled-components";
 export const PlatformContainer = styled.div``;
 PlatformContainer.displayName = "PlatformContainer";
 
+export const PlatformName = styled.span`
+  margin-right: 12px;
+`;
+PlatformName.displayName = "PlatformName";
+
 export const PlatformsContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
