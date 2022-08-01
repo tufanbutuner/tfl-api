@@ -7,9 +7,7 @@ import {
 
 import useFetch from "../../hooks/useFetch";
 
-interface StatusProps {}
-
-export default function Status({}: StatusProps) {
+export default function Status() {
   const { data } = useFetch(
     "https://api.tfl.gov.uk/Line/circle,metropolitan,hammersmith-city,bakerloo/Status"
   );

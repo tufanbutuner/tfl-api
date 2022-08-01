@@ -12,7 +12,7 @@ interface Props {
   setSelected?: any;
 }
 
-export default function SearchBar({ selected, setSelected }: Props) {
+export default function SearchBar({ setSelected }: Props) {
   const [stations, setStations] = useState<any[]>([]);
   const [search, setSearch] = useState<string | null>(null);
 

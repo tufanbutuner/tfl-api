@@ -17,7 +17,7 @@ export default function Platform({ selected }: Props): any {
   const [platform, setPlatform] = useState<any>();
 
   const convert = (time: number) => {
-    var minute = Math.floor(time / 60);
+    let minute = Math.floor(time / 60);
     if (minute < 1) {
       return "Due";
     }
