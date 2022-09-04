@@ -7,7 +7,10 @@ import Platform from "../components/Platform/Platform";
 import Status from "../components/Status/Status";
 
 export default function Home() {
-  const [selected, setSelected] = useState("940GZZLUGPS");
+  var [selected, setSelected] = useState({
+    id: "940GZZLUGPS",
+    stationName: "Great Portland Street Underground Station",
+  });
 
   return (
     <Container>
@@ -25,7 +28,7 @@ export default function Home() {
       <Status />
 
       <SearchBar selected={selected} setSelected={setSelected} />
-      <StationId>current station id: {selected}</StationId>
+      <StationId>current station name: {selected.stationName}</StationId>
       <Platform selected={selected} />
     </Container>
   );
