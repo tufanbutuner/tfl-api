@@ -6,6 +6,32 @@ import { useState } from "react";
 import Platform from "../components/Platform/Platform";
 import Status from "../components/Status/Status";
 
+import { ApolloProvider, gql } from "@apollo/client";
+import client from "../apollo-client";
+import PlatformRework from "../components/Platform/PlatformRework";
+
+// export async function getStaticProps() {
+//   const { data } = await client.query({
+//     query: gql`
+//       query Arrivals {
+//         getArrivals(id: "940GZZLUVIC") {
+//           id
+//           stationName
+//           platformName
+//           lineName
+//           towards
+//         }
+//       }
+//     `,
+//   });
+
+//   return {
+//     props: {
+//       arrivals: data.getArrivals.slice(0, 3),
+//     },
+//   };
+// }
+
 export default function Home() {
   var [selected, setSelected] = useState({
     id: "940GZZLUGPS",
@@ -29,7 +55,8 @@ export default function Home() {
 
       <SearchBar selected={selected} setSelected={setSelected} />
       <StationId>current station name: {selected.stationName}</StationId>
-      <Platform selected={selected} />
+      {/* <Platform selected={selected} /> */}
+      <PlatformRework selected={selected} />
     </Container>
   );
 }

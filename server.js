@@ -2,9 +2,9 @@ import { ApolloServer } from "apollo-server";
 import fetch from "node-fetch";
 
 const typeDefs = `
-    type Query {
+    type Query($arrival: String!) {
         station: [Station]
-        getArrivals(id: String!): [Station]
+        getArrivals(id: $arrival): [Station]
     }
 
     type Station {
