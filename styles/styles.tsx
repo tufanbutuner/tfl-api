@@ -3,9 +3,18 @@ import styled from "styled-components";
 export const Container = styled.div``;
 Container.displayName = "Container";
 
+export const HeroText = styled.div`
+  text-align: center;
+  position: absolute;
+  color: white;
+`;
+
 export const StationId = styled.h4`
   display: flex;
   justify-content: center;
+  color: #000;
+  margin: 80px 80px 0px 80px;
+  font-size: 64px;
 `;
 StationId.displayName = "StationId";
 
@@ -29,3 +38,26 @@ export const Subtitle = styled.h4`
   margin: 0px 0px 60px 0px;
 `;
 Subtitle.displayName = "Subtitle";
+
+export const Header = styled.header`
+  position: relative;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: #fff;
+  color: grey;
+`;
+Header.displayName = "Header";
+
+export const Hero = styled.div`
+  max-height: 400px;
+  min-height: 400px;
+  position: relative;
+  height: 400px;
+  border-radius: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: rgb(236, 229, 220);
+  color: grey;
+  margin: 24px 64px 24px 64px;
+`;
+Hero.displayName = "Hero";

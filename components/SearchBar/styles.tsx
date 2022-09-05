@@ -40,5 +40,6 @@ SearchResults.displayName = "SearchResults";
 export const Station = styled.span`
   cursor: pointer;
   display: flex;
+  color: #000;
 `;
 Station.displayName = "Station";
