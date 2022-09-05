@@ -26,7 +26,7 @@ export default function Platform({ selected }: Props): any {
 
   useEffect(() => {
     if (!selected) return;
-    fetch(`https://api.tfl.gov.uk/StopPoint/${selected}/arrivals?mode=tube`)
+    fetch(`https://api.tfl.gov.uk/StopPoint/${selected.id}/arrivals?mode=tube`)
       .then((r) => r.json())
       .then((data) => {
         setPlatform(lodash.groupBy(data, (d) => d.platformName));

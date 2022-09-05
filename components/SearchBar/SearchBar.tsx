@@ -12,7 +12,7 @@ interface Props {
   setSelected?: any;
 }
 
-export default function SearchBar({ setSelected }: Props) {
+export default function SearchBar({ selected, setSelected }: Props) {
   const [stations, setStations] = useState<any[]>([]);
   const [search, setSearch] = useState<string | null>(null);
 
@@ -44,7 +44,7 @@ export default function SearchBar({ setSelected }: Props) {
                 id="station-name"
                 key={station.id}
                 onClick={() => {
-                  setSelected(station.id);
+                  setSelected({ id: station.id, stationName: station.name });
                 }}
               >
                 {station.name}
