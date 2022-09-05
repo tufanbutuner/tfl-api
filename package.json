@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
     "lint": "next lint",
     "test": "jest",
     "cypress:open": "cypress open",
-    "devStart": "nodemon dev"
+    "devStart": "nodemon dev",
+    "start": "node server.js"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
