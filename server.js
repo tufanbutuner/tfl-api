@@ -31,20 +31,12 @@ const resolvers = {
       );
       return response.json();
     },
-    // station: () => {
-    //   const promises = parent.map(async (id) => {
-    //     const response = await fetch(id);
-    //     return response.json();
-    //   });
-    //   return Promise.all(promises);
-    // },
   },
 };
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  introspection: true,
   playground: true,
 });
 
