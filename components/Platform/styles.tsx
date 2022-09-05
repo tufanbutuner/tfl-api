@@ -1,10 +1,29 @@
 import styled from "styled-components";
 
+export const PlatCardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+PlatCardContainer.displayName = "PlatCardContainer";
+
+export const PlatformCard = styled.div`
+  height: 50%;
+  width: 80%;
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 24px;
+`;
+PlatformCard.displayName = "PlatformCard";
+
 export const PlatformContainer = styled.div``;
 PlatformContainer.displayName = "PlatformContainer";
 
 export const PlatformName = styled.span`
-  margin-right: 12px;
+  display: flex;
+  justify-content: center;
+  padding: 24px 0px 0px 0px;
+  font-weight: bold;
 `;
 PlatformName.displayName = "PlatformName";
 
