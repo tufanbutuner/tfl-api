@@ -41,7 +41,7 @@ export default function Platform({ selected }: Props): any {
     return (
       // eslint-disable-next-line react/jsx-key
       <PlatCardContainer>
-        <PlatformName>{platform[platform]}</PlatformName>
+        <PlatformName>{plat}</PlatformName>
         <PlatformCard>
           {platform[plat]
             .sort((a: any, b: any) => a.timeToStation - b.timeToStation)

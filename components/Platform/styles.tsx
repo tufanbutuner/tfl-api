@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
 export const PlatCardContainer = styled.div`
-  display: flex;
+  display: block;
   justify-content: center;
 `;
 PlatCardContainer.displayName = "PlatCardContainer";
 
 export const PlatformCard = styled.div`
   height: 50%;
-  width: 80%;
   overflow: hidden;
   border-radius: 20px;
   cursor: pointer;
   margin-bottom: 24px;
+  margin: 0px 36px;
 `;
 PlatformCard.displayName = "PlatformCard";
 

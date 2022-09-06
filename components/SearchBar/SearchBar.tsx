@@ -15,6 +15,7 @@ interface Props {
 export default function SearchBar({ selected, setSelected }: Props) {
   const [stations, setStations] = useState<any[]>([]);
   const [search, setSearch] = useState<string | null>(null);
+  const [isActive, setIsActive] = useState(false);
 
   let debouncedSearch = useDebounce(search, 500);
 
@@ -43,8 +44,9 @@ export default function SearchBar({ selected, setSelected }: Props) {
               <Station
                 id="station-name"
                 key={station.id}
-                onClick={() => {
+                onClick={async () => {
                   setSelected({ id: station.id, stationName: station.name });
+                  await setStations([]);
                 }}
               >
                 {station.name}

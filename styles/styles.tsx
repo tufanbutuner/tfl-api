@@ -15,6 +15,14 @@ export const StationId = styled.h4`
   color: #000;
   margin: 80px 80px 0px 80px;
   font-size: 64px;
+
+  @media only screen and (max-width: 1024px) {
+    font-size: 48px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    font-size: 32px;
+  }
 `;
 StationId.displayName = "StationId";
 

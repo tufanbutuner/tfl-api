@@ -21,6 +21,10 @@ export const SearchInput = styled.input`
     border-color: rgba(0, 0, 0, 0.3);
     outline: none;
   }
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 SearchInput.displayName = "SearchInput";
 
@@ -28,12 +32,16 @@ export const SearchResults = styled.div`
   padding: 12px;
   margin-top: 40px;
   width: 64%;
-  height: 150px;
+  max-height: 150px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
   overflow: hidden;
   overflow-y: auto;
   border-radius: 4px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 SearchResults.displayName = "SearchResults";
 
@@ -41,5 +49,9 @@ export const Station = styled.span`
   cursor: pointer;
   display: flex;
   color: #000;
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  margin: 8px 0px;
+  padding: 8px;
 `;
 Station.displayName = "Station";
