@@ -38,7 +38,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   csrfPrevention: true,
-  cors: true,
+  cors: { origin: "*" },
 });
 
 server.listen().then(({ url }) => {
