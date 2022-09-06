@@ -1,6 +1,6 @@
 import { gql } from "apollo-server-micro";
 
-export const typeDefs = `
+export const typeDefs = gql`
   type Station {
     id: String!
     stationName: String
@@ -15,7 +15,7 @@ export const typeDefs = `
     expectedArrival: String
     modeName: String
   }
-  
+
   type Query {
     getArrivals(id: String!): [Station]
     station: [Station]
