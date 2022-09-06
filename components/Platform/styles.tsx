@@ -24,6 +24,7 @@ export const PlatformName = styled.span`
   justify-content: center;
   padding: 24px 0px 0px 0px;
   font-weight: bold;
+  color: black;
 `;
 PlatformName.displayName = "PlatformName";
 

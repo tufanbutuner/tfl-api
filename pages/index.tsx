@@ -11,6 +11,7 @@ import Head from "next/head";
 import SearchBar from "../components/SearchBar/SearchBar";
 import { useState } from "react";
 import PlatformRework from "../components/Platform/PlatformRework";
+import Platform from "../components/Platform/Platform";
 
 export default function Home() {
   var [selected, setSelected] = useState({
@@ -37,6 +38,7 @@ export default function Home() {
             href="https://static.wixstatic.com/media/82ad3e_99fbac5aa96e4b91b5d2460fcd9181a7~mv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/82ad3e_99fbac5aa96e4b91b5d2460fcd9181a7~mv2.png"
           />
         </Head>
+        {/* <Platform selected={selected} /> */}
         <PlatformRework selected={selected} />
       </Container>
     </>
