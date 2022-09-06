@@ -83,29 +83,3 @@ export default function PlatformRework({ selected }: Props): any {
     );
   });
 }
-
-//     .sort((a: any, b: any) => a.timeToStation - b.timeToStation)
-//     .slice(0, 3)
-//     .map((arrival: any) => {
-//       return (
-//         <>
-//           <PlatformContainer>
-//             <ArrivalList>
-//               <ListElement>
-//                 <PlatformName>{arrival.platformName}</PlatformName>
-//                 <TowardsTrain>{arrival.towards}</TowardsTrain>
-//                 <LineName lineName={arrival.lineName}>
-//                   {arrival.lineName}
-//                 </LineName>
-//                 <TimeToStation>
-//                   {convert(arrival.timeToStation) !== "Due"
-//                     ? `${convert(arrival.timeToStation)} min`
-//                     : convert(arrival.timeToStation)}
-//                 </TimeToStation>
-//               </ListElement>
-//             </ArrivalList>
-//           </PlatformContainer>
-//         </>
-//       );
-//     });
-// });

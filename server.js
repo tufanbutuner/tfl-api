@@ -37,7 +37,8 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  playground: true,
+  csrfPrevention: true,
+  cors: true,
 });
 
 server.listen().then(({ url }) => {

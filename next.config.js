@@ -3,6 +3,8 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  fs: false,
+  path: false,
 };
 
 export default nextConfig;
