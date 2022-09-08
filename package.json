@@ -9,7 +9,8 @@
     "test": "jest",
     "cypress:open": "cypress open",
     "devStart": "nodemon dev",
-    "start": "node server.js"
+    "start": "node server.js",
+    "pa11y": "node tests/pa11y.js"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
@@ -26,6 +27,7 @@
     "mongoose": "^6.5.4",
     "next": "12.1.6",
     "node-fetch": "^3.2.10",
+    "pa11y": "^6.2.3",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-icons": "^4.4.0",
@@ -49,7 +51,7 @@
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
     "nodemon": "^2.0.19",
-    "sonarqube-scanner": "^2.8.1",
+    "sonarqube-scanner": "^0.1.0",
     "typescript": "4.7.2"
   },
   "type": "module"
