@@ -17,15 +17,19 @@ export default function Test() {
 
   return (
     <TestContainer>
-      <Result>
-        <p>{results.documentTitle}</p>
-        {results.issues?.map((d: any, i: any) => (
-          <div key={i}>
-            <Code>{d.code}</Code>
-            <p>{d.message}</p>
-          </div>
-        ))}
-      </Result>
+      {!results ? (
+        <p>Loading...</p>
+      ) : (
+        <Result>
+          <p>{results.documentTitle}</p>
+          {results.issues?.map((d: any, i: any) => (
+            <div key={i}>
+              <Code>{d.code}</Code>
+              <p>{d.message}</p>
+            </div>
+          ))}
+        </Result>
+      )}
     </TestContainer>
   );
 }
