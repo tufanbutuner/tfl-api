@@ -69,3 +69,21 @@ export const Hero = styled.div`
   margin: 24px 64px 24px 64px;
 `;
 Hero.displayName = "Hero";
+
+export const Code = styled.p`
+  background: rgb(236, 229, 220);
+  color: grey;
+  border-radius: 6px;
+  width: fit-content;
+  padding: 6px;
+`;
+Code.displayName = "Code";
+
+export const TestContainer = styled.div`
+  display: flex;
+  margin: 60px;
+`;
+TestContainer.displayName = "TestContainer";
+
+export const Result = styled.div``;
+Result.displayName = "Result";

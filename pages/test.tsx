@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { Code, TestContainer, Result } from "../styles/styles";
 
 export default function Test() {
   const [results, setResults] = useState<any>([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/test")
+    fetch("https://tfl-test-api.onrender.com/test")
       .then((res) => {
         return res.json();
       })
@@ -15,14 +16,16 @@ export default function Test() {
   }, []);
 
   return (
-    <>
-      <p>{results.documentTitle}</p>
-      {results.issues?.map((d: any, i: any) => (
-        <div key={i}>
-          <p>{d.code}</p>
-          <p>{d.message}</p>
-        </div>
-      ))}
-    </>
+    <TestContainer>
+      <Result>
+        <p>{results.documentTitle}</p>
+        {results.issues?.map((d: any, i: any) => (
+          <div key={i}>
+            <Code>{d.code}</Code>
+            <p>{d.message}</p>
+          </div>
+        ))}
+      </Result>
+    </TestContainer>
   );
 }
