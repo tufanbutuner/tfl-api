@@ -3,21 +3,24 @@ import { useEffect, useState } from "react";
 
 export default function Test() {
   const [results, setResults] = useState<any>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("https://tfl-test-api.onrender.com/test")
       .then((res) => {
         return res.json();
       })
       .then((data) => {
         setResults(data);
+        setIsLoading(false);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <TestContainer>
-      {!results ? (
+      {isLoading === true ? (
         <span>Loading...</span>
       ) : (
         <Result>
