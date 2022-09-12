@@ -1,17 +1,17 @@
 import {
   Container,
-  Title,
-  StationId,
   Header,
   Hero,
   HeroText,
+  StationId,
+  Title,
 } from "../styles/styles";
 
 import Head from "next/head";
+import Platform from "../components/Platform/Platform";
+import PlatformRework from "../components/Platform/PlatformRework";
 import SearchBar from "../components/SearchBar/SearchBar";
 import { useState } from "react";
-import PlatformRework from "../components/Platform/PlatformRework";
-import Platform from "../components/Platform/Platform";
 
 export default function Home() {
   var [selected, setSelected] = useState({

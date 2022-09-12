@@ -1,5 +1,5 @@
+import { Code, Result, TestContainer } from "../styles/styles";
 import { useEffect, useState } from "react";
-import { Code, TestContainer, Result } from "../styles/styles";
 
 export default function Test() {
   const [results, setResults] = useState<any>([]);
@@ -18,7 +18,7 @@ export default function Test() {
   return (
     <TestContainer>
       {!results ? (
-        <p>Loading...</p>
+        <span>Loading...</span>
       ) : (
         <Result>
           <p>{results.documentTitle}</p>
