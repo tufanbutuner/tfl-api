@@ -16,3 +16,4 @@ Running it through the browser allows you to see the tests run on a local versio
 ```
 npm run cy:open
 ```
+
