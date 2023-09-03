@@ -1,22 +1,14 @@
-import {
-  Container,
-  Header,
-  Hero,
-  HeroText,
-  StationId,
-  Title,
-} from "../styles/styles";
+import { Container, Header, StationId, Title } from "../styles/styles";
 
 import Head from "next/head";
-import Platform from "../components/Platform/Platform";
-import PlatformRework from "../components/Platform/PlatformRework";
-import SearchBar from "../components/SearchBar/SearchBar";
 import { useState } from "react";
+import Platform from "../components/Platform/Platform";
+import SearchBar from "../components/SearchBar/SearchBar";
 
 export default function Home() {
   var [selected, setSelected] = useState({
-    id: "940GZZLUGPS",
-    stationName: "Great Portland Street Underground Station",
+    id: "",
+    stationName: "",
   });
 
   return (
@@ -24,12 +16,12 @@ export default function Home() {
       <Header>
         <Title>Transform TfL Arrivals</Title>
       </Header>
-      <Hero>
-        <HeroText>
-          <StationId>{selected.stationName}</StationId>
-          <SearchBar selected={selected} setSelected={setSelected} />
-        </HeroText>
-      </Hero>
+
+      <StationId>
+        {!selected.stationName ? "Search for a station" : selected.stationName}
+      </StationId>
+
+      <SearchBar selected={selected} setSelected={setSelected} />
       <Container>
         <Head>
           <title>Transform Journey Planner</title>
@@ -38,8 +30,8 @@ export default function Home() {
             href="https://static.wixstatic.com/media/82ad3e_99fbac5aa96e4b91b5d2460fcd9181a7~mv2.png/v1/fill/w_32%2Ch_32%2Clg_1%2Cusm_0.66_1.00_0.01/82ad3e_99fbac5aa96e4b91b5d2460fcd9181a7~mv2.png"
           />
         </Head>
-        <Platform selected={selected} />
-        {/* <PlatformRework selected={selected} /> */}
+
+        {selected.id && <Platform selected={selected} />}
       </Container>
     </>
   );

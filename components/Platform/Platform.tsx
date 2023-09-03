@@ -1,16 +1,16 @@
+import lodash from "lodash";
+import { useEffect, useState } from "react";
 import {
   ArrivalList,
   LineName,
   ListElement,
-  PlatformContainer,
-  TimeToStation,
-  TowardsTrain,
-  PlatformName,
   PlatCardContainer,
   PlatformCard,
+  PlatformContainer,
+  PlatformName,
+  TimeToStation,
+  TowardsTrain,
 } from "./styles";
-import React, { useEffect, useState } from "react";
-import lodash from "lodash";
 interface Props {
   selected?: any;
 }
@@ -37,34 +37,32 @@ export default function Platform({ selected }: Props): any {
 
   if (!platform) return <></>;
 
-  return Object.keys(platform).map((plat: any) => {
+  return Object.keys(platform).map((plat: any, index: number) => {
     return (
       // eslint-disable-next-line react/jsx-key
-      <PlatCardContainer>
+      <PlatCardContainer key={index}>
         <PlatformName>{plat}</PlatformName>
         <PlatformCard>
           {platform[plat]
             .sort((a: any, b: any) => a.timeToStation - b.timeToStation)
             .slice(0, 3)
-            .map((arrival: any) => {
+            .map((arrival: any, index: number) => {
               return (
-                <>
-                  <PlatformContainer>
-                    <ArrivalList>
-                      <ListElement>
-                        <TowardsTrain>{arrival.towards}</TowardsTrain>
-                        <LineName lineName={arrival.lineName}>
-                          {arrival.lineName}
-                        </LineName>
-                        <TimeToStation>
-                          {convert(arrival.timeToStation) !== "Due"
-                            ? `${convert(arrival.timeToStation)} min`
-                            : convert(arrival.timeToStation)}
-                        </TimeToStation>
-                      </ListElement>
-                    </ArrivalList>
-                  </PlatformContainer>
-                </>
+                <PlatformContainer key={index}>
+                  <ArrivalList>
+                    <ListElement>
+                      <TowardsTrain>{arrival.towards}</TowardsTrain>
+                      <LineName lineName={arrival.lineName}>
+                        {arrival.lineName}
+                      </LineName>
+                      <TimeToStation>
+                        {convert(arrival.timeToStation) !== "Due"
+                          ? `${convert(arrival.timeToStation)} min`
+                          : convert(arrival.timeToStation)}
+                      </TimeToStation>
+                    </ListElement>
+                  </ArrivalList>
+                </PlatformContainer>
               );
             })}
         </PlatformCard>

@@ -13,6 +13,12 @@ export const PlatformCard = styled.div`
   cursor: pointer;
   margin-bottom: 24px;
   margin: 0px 36px;
+
+  @media (max-width: 768px) {
+    border-radius: 1px;
+    margin: 0.5rem 1rem;
+    gap: 0.5rem;
+  }
 `;
 PlatformCard.displayName = "PlatformCard";
 
@@ -22,6 +28,7 @@ PlatformContainer.displayName = "PlatformContainer";
 export const PlatformName = styled.span`
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
   padding: 24px 0px 0px 0px;
   font-weight: bold;
   color: black;
@@ -46,7 +53,10 @@ ListContainer.displayName = "ListContainer";
 
 export const TowardsTrain = styled.span`
   font-weight: bold;
-  margin-right: 12px;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 TowardsTrain.displayName = "TowardsTrain";
 
@@ -57,6 +67,11 @@ export const ArrivalList = styled.ul`
   border: 1px solid #dfdfdf;
   border-radius: 12px;
   margin: 12px 24px;
+
+  @media (max-width: 768px) {
+    margin: 0 auto;
+    padding-left: 2rem;
+  }
 `;
 ArrivalList.displayName = "ArrivalList";
 
@@ -65,6 +80,7 @@ export const ListElement = styled.li`
   align-items: center;
   padding: 10px 0px;
   width: 100%;
+  gap: 1rem;
 `;
 ListElement.displayName = "ListElement";
 
